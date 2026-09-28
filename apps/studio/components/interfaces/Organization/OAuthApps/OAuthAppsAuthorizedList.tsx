@@ -27,6 +27,11 @@ export const OAuthAppsAuthorizedList = () => {
     'approved_oauth_apps'
   )
 
+  const { can: canRevokeOAuthApps } = useAsyncCheckPermissions(
+    PermissionAction.DELETE,
+    'approved_oauth_apps'
+  )
+
   const {
     data,
     isPending,
@@ -101,7 +106,11 @@ export const OAuthAppsAuthorizedList = () => {
                     {data.pages.map((page, pageIndex) => (
                       <Fragment key={pageIndex}>
                         {page.data.map((app) => (
-                          <OAuthAppsAuthorizedRow key={app.id} app={app} />
+                          <OAuthAppsAuthorizedRow
+                            key={app.id}
+                            app={app}
+                            canRevoke={canRevokeOAuthApps}
+                          />
                         ))}
                       </Fragment>
                     ))}
