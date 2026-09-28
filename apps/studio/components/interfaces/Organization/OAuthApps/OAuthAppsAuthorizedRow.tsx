@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { MoreVerticalIcon } from 'lucide-react'
 import { useRef, useState } from 'react'
 import {
@@ -15,31 +14,9 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from 'ui'
-||||||| parent of c1e7536a0a (Refactor following types changes + remove app actions)
-import { MoreVertical } from 'lucide-react'
-import {
-  Badge,
-  Button,
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-  TableCell,
-  TableRow,
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from 'ui'
-=======
-import { TableCell, TableRow } from 'ui'
->>>>>>> c1e7536a0a (Refactor following types changes + remove app actions)
 
-<<<<<<< HEAD
 import { OAuthAppsMemberGrantsDialogContent } from './OAuthAppsMemberGrantsDialogContent'
-||||||| parent of c1e7536a0a (Refactor following types changes + remove app actions)
-import type { OAuthAppOverviewItem } from '@/data/oauth-apps/types'
-=======
->>>>>>> c1e7536a0a (Refactor following types changes + remove app actions)
+import { OAuthAppsRevokeDialogContent } from './OAuthAppsRevokeDialogContent'
 import type { OAuthApprovalItem } from '@/data/oauth-apps/types'
 
 export interface OAuthAppsAuthorizedRowProps {
@@ -47,22 +24,10 @@ export interface OAuthAppsAuthorizedRowProps {
 }
 
 export const OAuthAppsAuthorizedRow = ({ app }: OAuthAppsAuthorizedRowProps) => {
-<<<<<<< HEAD
   const [isDialogOpen, setIsDialogOpen] = useState(false)
   const [dialogContent, setDialogContent] = useState<'grants' | 'revoke' | null>(null)
   const menuTriggerRef = useRef<HTMLButtonElement | null>(null)
 
-||||||| parent of c1e7536a0a (Refactor following types changes + remove app actions)
-export const OAuthAppsAuthorizedRow = ({
-  app,
-  canRevoke,
-  onSelectViewGrants,
-  onSelectRevoke,
-}: OAuthAppsAuthorizedRowProps) => {
-  const showRevoke = canRevoke && app.status === 'active'
-
-=======
->>>>>>> c1e7536a0a (Refactor following types changes + remove app actions)
   return (
     <TableRow>
       <TableCell>
@@ -114,9 +79,20 @@ export const OAuthAppsAuthorizedRow = ({
                   View grants
                 </DropdownMenuItem>
               </DialogTrigger>
+              <DialogTrigger asChild>
+                <DropdownMenuItem
+                  className="text-destructive"
+                  onClick={() => setDialogContent('revoke')}
+                >
+                  Disconnect
+                </DropdownMenuItem>
+              </DialogTrigger>
             </DropdownMenuContent>
           </DropdownMenu>
           {dialogContent === 'grants' && <OAuthAppsMemberGrantsDialogContent app={app} />}
+          {dialogContent === 'revoke' && (
+            <OAuthAppsRevokeDialogContent app={app} onClose={() => setDialogContent(null)} />
+          )}
         </Dialog>
       </TableCell>
     </TableRow>
