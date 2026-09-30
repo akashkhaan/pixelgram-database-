@@ -4,6 +4,7 @@ import { Organization } from '~/data/organizations'
 import { useSendTelemetryEvent } from '~/lib/telemetry'
 import { Check } from 'lucide-react'
 import Link from 'next/link'
+import { isCrossZoneHref } from '@/lib/cross-zone'
 import { plans } from 'shared-data/plans'
 import { Button, cn } from 'ui'
 
@@ -86,7 +87,11 @@ const PricingPlans = ({ organizations, hasExistingOrganizations }: PricingPlansP
                       variant={plan.name === 'Enterprise' ? 'default' : 'primary'}
                       asChild
                     >
-                      <Link href={plan.href} prefetch={false} onClick={sendPricingEvent}>
+                      <Link
+                        href={plan.href}
+                        prefetch={isCrossZoneHref(plan.href) ? false : undefined}
+                        onClick={sendPricingEvent}
+                      >
                         {plan.cta}
                       </Link>
                     </Button>

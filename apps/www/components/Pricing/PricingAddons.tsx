@@ -4,6 +4,7 @@ import { ArrowUpRight } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import Image from 'next/image'
 import Link from 'next/link'
+import { isCrossZoneHref } from '@/lib/cross-zone'
 import { FC } from 'react'
 import { Button, cn } from 'ui'
 
@@ -97,7 +98,11 @@ const AddonCard = ({ addon }: any) => {
         </div>
         <div className="flex items-center gap-4 mt-4">
           <Button asChild size="tiny" iconRight={<ArrowUpRight className="w-4 h-4" />}>
-            <Link href={addon.ctaLink} target={addon.ctaTarget} prefetch={false}>
+            <Link
+              href={addon.ctaLink}
+              target={addon.ctaTarget}
+              prefetch={isCrossZoneHref(addon.ctaLink) ? false : undefined}
+            >
               {addon.ctaText}
             </Link>
           </Button>
@@ -157,7 +162,7 @@ const AddonCard = ({ addon }: any) => {
       href={addon.ctaLink}
       className={containerClasses}
       target={addon.ctaTarget}
-      prefetch={false}
+      prefetch={isCrossZoneHref(addon.ctaLink) ? false : undefined}
     >
       <SmallCard />
     </Link>
