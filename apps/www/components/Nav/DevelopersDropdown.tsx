@@ -3,6 +3,8 @@ import { data as DevelopersData } from 'data/Developers'
 import { ChevronRight } from 'lucide-react'
 import Link from 'next/link'
 
+import { isCrossZoneHref } from '@/lib/cross-zone'
+
 type LinkProps = {
   text: string
   description?: string
@@ -27,6 +29,7 @@ export const DevelopersDropdown = () => {
                 <li key={link.text}>
                   <Link
                     href={link.url!}
+                    prefetch={isCrossZoneHref(link.url!) ? false : undefined}
                     className="flex group items-center gap-2 text-foreground-light text-sm hover:text-foreground focus-visible:text-foreground focus-ring rounded-sm"
                   >
                     {Icon && <Icon size={16} strokeWidth={1.3} />}
