@@ -86,7 +86,7 @@ const PricingPlans = ({ organizations, hasExistingOrganizations }: PricingPlansP
                       variant={plan.name === 'Enterprise' ? 'default' : 'primary'}
                       asChild
                     >
-                      <Link href={plan.href} onClick={sendPricingEvent}>
+                      <Link href={plan.href} prefetch={false} onClick={sendPricingEvent}>
                         {plan.cta}
                       </Link>
                     </Button>

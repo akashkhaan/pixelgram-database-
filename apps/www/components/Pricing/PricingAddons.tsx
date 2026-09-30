@@ -97,7 +97,7 @@ const AddonCard = ({ addon }: any) => {
         </div>
         <div className="flex items-center gap-4 mt-4">
           <Button asChild size="tiny" iconRight={<ArrowUpRight className="w-4 h-4" />}>
-            <Link href={addon.ctaLink} target={addon.ctaTarget}>
+            <Link href={addon.ctaLink} target={addon.ctaTarget} prefetch={false}>
               {addon.ctaText}
             </Link>
           </Button>
@@ -153,7 +153,12 @@ const AddonCard = ({ addon }: any) => {
       <HighlightCard />
     </div>
   ) : (
-    <Link href={addon.ctaLink} className={containerClasses} target={addon.ctaTarget}>
+    <Link
+      href={addon.ctaLink}
+      className={containerClasses}
+      target={addon.ctaTarget}
+      prefetch={false}
+    >
       <SmallCard />
     </Link>
   )

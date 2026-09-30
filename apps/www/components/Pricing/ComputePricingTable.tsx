@@ -51,6 +51,7 @@ const ComputePricingTable = () => {
                       {column.url ? (
                         <Link
                           href={column.url}
+                          prefetch={false}
                           className="underline text-primary hover:text-brand-600"
                           target="_blank"
                         >

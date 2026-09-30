@@ -86,6 +86,7 @@ const MobileHeader = ({
         <Button asChild size="medium" variant={plan === 'Enterprise' ? 'default' : 'primary'} block>
           <Link
             href={selectedPlan.href}
+            prefetch={false}
             onClick={() =>
               sendTelemetryEvent({
                 action: 'www_pricing_plan_cta_clicked',
@@ -465,6 +466,7 @@ const PricingComparisonTable = ({
                           >
                             <Link
                               href={plan.href}
+                              prefetch={false}
                               onClick={() =>
                                 sendTelemetryEvent({
                                   action: 'www_pricing_plan_cta_clicked',
