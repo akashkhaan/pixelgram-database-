@@ -4,6 +4,7 @@ import { useBreakpoint } from 'common'
 import { range } from 'lib/helpers'
 import type { GoTweetsSection } from 'marketing'
 import Link from 'next/link'
+import { isCrossZoneHref } from '@/lib/cross-zone'
 import { topTweets } from 'shared-data/tweets'
 import { Button, cn } from 'ui'
 import { TweetCard } from 'ui-patterns/TweetCard'
@@ -93,7 +94,9 @@ export default function TweetsSection({ section }: { section: GoTweetsSection })
                   variant={cta.variant === 'secondary' ? 'default' : 'primary'}
                   size="small"
                 >
-                  <Link href={cta.href}>{cta.label}</Link>
+                  <Link href={cta.href} prefetch={isCrossZoneHref(cta.href) ? false : undefined}>
+                    {cta.label}
+                  </Link>
                 </Button>
               ))}
             </div>

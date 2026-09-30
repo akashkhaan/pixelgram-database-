@@ -268,6 +268,7 @@ export default function PartnersContent({ featuredPartners }: Props) {
               <Link
                 key={option.title}
                 href={option.href}
+                prefetch={false}
                 className="group block"
                 target="_blank"
                 rel="noopener noreferrer"
