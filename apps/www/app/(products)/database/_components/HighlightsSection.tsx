@@ -75,7 +75,9 @@ export function HighlightsSection() {
               </div>
               <div className="mt-6">
                 <Button size="small" asChild>
-                  <Link href={highlight.cta.href}>{highlight.cta.label}</Link>
+                  <Link href={highlight.cta.href} prefetch={false}>
+                    {highlight.cta.label}
+                  </Link>
                 </Button>
               </div>
             </div>

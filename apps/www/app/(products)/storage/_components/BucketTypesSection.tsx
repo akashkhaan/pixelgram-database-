@@ -65,7 +65,9 @@ export function BucketTypesSection() {
               </div>
               <div className="mt-6">
                 <Button size="small" asChild>
-                  <Link href={bucket.cta.href}>{bucket.cta.label}</Link>
+                  <Link href={bucket.cta.href} prefetch={false}>
+                    {bucket.cta.label}
+                  </Link>
                 </Button>
               </div>
             </div>

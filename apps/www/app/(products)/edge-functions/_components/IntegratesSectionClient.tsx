@@ -199,6 +199,7 @@ export function IntegratesSectionClient({ useCases }: { useCases: UseCase[] }) {
             </AnimatePresence>
             <Link
               href="/docs/guides/functions"
+              prefetch={false}
               className="flex items-center gap-1.5 rounded-full bg-surface-100 border border-border px-3 py-1.5 text-xs text-foreground-light hover:text-foreground hover:bg-surface-200 transition-colors whitespace-nowrap shrink-0"
             >
               Documentation

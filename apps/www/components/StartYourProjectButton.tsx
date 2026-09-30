@@ -26,7 +26,7 @@ export function StartYourProjectButton({
 
   return (
     <Button asChild size={size} variant={variant} className={className}>
-      <Link href={getDashboardCtaHref(isLoggedIn)} onClick={onClick}>
+      <Link href={getDashboardCtaHref(isLoggedIn)} prefetch={false} onClick={onClick}>
         {children}
       </Link>
     </Button>
