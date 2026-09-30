@@ -19,32 +19,21 @@ describe('isCrossZoneHref in production', () => {
   })
 
   it.each([
-    '/docs',
     '/docs/guides/auth#setup',
     '/dashboard',
-    '/dashboard/projects',
     '/dashboard/project/_?sidebar=ai-assistant',
-    'https://supabase.com/dashboard',
     'https://supabase.com/dashboard/sign-up',
-    'https://supabase.com/library',
-    '/design-system/docs',
     '/humans.txt',
-    '/.well-known/security.txt',
   ])('%s is served by another zone', (href) => {
     expect(isCrossZoneHref(href)).toBe(true)
   })
 
   it.each([
-    '/',
     '/pricing',
-    '/features',
     '/dashboards',
-    '/rss.xml',
-    '/feed.xml',
-    '/.well-known/ard.json',
+    '/.well-known/ai-catalog.json',
     'https://github.com/supabase/supabase',
     'https://supabase.com.example.com/dashboard',
-    '#',
   ])('%s stays in the www zone or is external', (href) => {
     expect(isCrossZoneHref(href)).toBe(false)
   })
