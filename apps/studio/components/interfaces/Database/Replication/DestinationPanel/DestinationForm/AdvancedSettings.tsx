@@ -55,11 +55,38 @@ export const AdvancedSettings = ({
             <div className="flex flex-col items-start gap-0.5">
               <span className="text-sm font-medium">Advanced settings</span>
               <span className="text-sm text-foreground-lighter font-normal">
-                Customize how the pipeline syncs and replicates data.
+                {type === 'DuckLake'
+                  ? 'Adjust catalog connections and replication settings.'
+                  : 'Customize how the pipeline syncs and replicates data.'}
               </span>
             </div>
           </AccordionTrigger>
           <AccordionContent className="pb-0! pt-3 [&>div]:flex [&>div]:flex-col [&>div]:gap-y-4 [&>div]:px-5">
+            {type === 'DuckLake' && (
+              <FormField
+                control={form.control}
+                name="ducklakePoolSize"
+                render={({ field }) => (
+                  <FormItemLayout
+                    layout="horizontal"
+                    label="Pool size"
+                    description="Maximum concurrent connections this pipeline opens to the catalog. Choose 1 to 6."
+                  >
+                    <FormControl>
+                      <Input
+                        {...field}
+                        type="number"
+                        min={1}
+                        max={6}
+                        value={field.value ?? ''}
+                        onChange={handleNumberChange(field)}
+                      />
+                    </FormControl>
+                  </FormItemLayout>
+                )}
+              />
+            )}
+
             <FormField
               control={form.control}
               name="maxFillMs"
