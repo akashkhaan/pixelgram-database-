@@ -29,6 +29,7 @@ export function Hero() {
           <Button variant="primary" asChild size="medium">
             <Link
               href={getDashboardCtaHref(isLoggedIn)}
+              prefetch={false}
               onClick={() =>
                 sendTelemetryEvent({
                   action: 'start_project_button_clicked',

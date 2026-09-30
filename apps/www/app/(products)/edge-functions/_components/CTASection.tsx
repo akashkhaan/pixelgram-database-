@@ -88,7 +88,9 @@ export function CTASection() {
         <div className="flex items-center gap-2">
           <StartYourProjectButton />
           <Button asChild size="medium">
-            <Link href="/docs/guides/functions/quickstart">Quickstart guide</Link>
+            <Link href="/docs/guides/functions/quickstart" prefetch={false}>
+              Quickstart guide
+            </Link>
           </Button>
         </div>
       </div>

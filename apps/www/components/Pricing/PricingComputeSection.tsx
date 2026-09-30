@@ -129,7 +129,7 @@ const PricingComputeSection = () => {
           </div>
 
           <Button asChild size="tiny">
-            <Link href="https://supabase.com/docs/guides/platform/compute-add-ons">
+            <Link href="https://supabase.com/docs/guides/platform/compute-add-ons" prefetch={false}>
               Learn about Compute add-ons
             </Link>
           </Button>
@@ -164,6 +164,7 @@ const PricingComputeSection = () => {
                   <Link
                     href="https://supabase.com/docs/guides/platform/manage-your-usage/compute"
                     target="_blank"
+                    prefetch={false}
                     className="transition text-primary hover:text-brand-600"
                   >
                     usage-based billing for compute
@@ -172,6 +173,7 @@ const PricingComputeSection = () => {
                   <Link
                     href="https://supabase.com/docs/guides/platform/compute-add-ons"
                     target="_blank"
+                    prefetch={false}
                     className="transition text-primary hover:text-brand-600"
                   >
                     Compute Add-ons

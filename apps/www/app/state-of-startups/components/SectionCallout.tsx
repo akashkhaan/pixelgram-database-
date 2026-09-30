@@ -1,5 +1,6 @@
 import { ArrowUpRight } from 'lucide-react'
 import Link from 'next/link'
+import { isCrossZoneHref } from '@/lib/cross-zone'
 
 export interface SectionCalloutData {
   eyebrow: string
@@ -17,6 +18,7 @@ export function SectionCallout({ eyebrow, body, href, cta, external }: SectionCa
         <p className="text-foreground-light text-balance">{body}</p>
         <Link
           href={href}
+          prefetch={isCrossZoneHref(href) ? false : undefined}
           target={external ? '_blank' : undefined}
           rel={external ? 'noopener noreferrer' : undefined}
           className="inline-flex items-center gap-1 text-primary text-sm font-medium hover:underline w-fit"

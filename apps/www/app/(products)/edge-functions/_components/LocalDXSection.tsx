@@ -85,6 +85,7 @@ function CICard() {
           Use the{' '}
           <Link
             href="https://supabase.com/docs/guides/functions/deploy#cicd-deployment"
+            prefetch={false}
             className="underline hover:text-foreground-light transition-colors"
             target="_blank"
             rel="noopener noreferrer"

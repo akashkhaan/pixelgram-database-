@@ -24,6 +24,7 @@ import { ThemeToggle } from 'ui-patterns/ThemeToggle'
 
 import useDarkLaunchWeeks from '../../hooks/useDarkLaunchWeeks'
 import SectionContainer from '../Layouts/SectionContainer'
+import { isCrossZoneHref } from '@/lib/cross-zone'
 
 interface Props {
   className?: string
@@ -234,7 +235,12 @@ const Footer = (props: Props) => {
                               link.url.startsWith('https') ? (
                                 <a href={link.url}>{children}</a>
                               ) : (
-                                <Link href={link.url}>{children}</Link>
+                                <Link
+                                  href={link.url}
+                                  prefetch={isCrossZoneHref(link.url) ? false : undefined}
+                                >
+                                  {children}
+                                </Link>
                               )
                             ) : (
                               Component && <Component>{children}</Component>

@@ -3,6 +3,7 @@
 import { ArrowRight, Check } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { isCrossZoneHref } from '@/lib/cross-zone'
 import ReactMarkdown from 'react-markdown'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Button } from 'ui'
 
@@ -268,6 +269,7 @@ export default function PartnersContent({ featuredPartners }: Props) {
               <Link
                 key={option.title}
                 href={option.href}
+                prefetch={isCrossZoneHref(option.href) ? false : undefined}
                 className="group block"
                 target="_blank"
                 rel="noopener noreferrer"

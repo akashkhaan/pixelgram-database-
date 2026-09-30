@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { isCrossZoneHref } from '@/lib/cross-zone'
 import { cn } from 'ui'
 
 import { AnimatedGridBackground } from '../AnimatedGridBackground'
@@ -358,6 +359,7 @@ function MonthSection({ month }: { month: Month }) {
           <li key={announcement.title}>
             <Link
               href={announcement.url}
+              prefetch={isCrossZoneHref(announcement.url) ? false : undefined}
               target="_blank"
               rel="noopener noreferrer"
               className="group flex items-center gap-2 text-sm text-foreground-light hover:text-foreground transition-colors"

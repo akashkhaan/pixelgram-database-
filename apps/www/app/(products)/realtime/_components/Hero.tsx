@@ -21,7 +21,9 @@ export function Hero() {
         <div className="flex items-center gap-2">
           <StartYourProjectButton />
           <Button asChild size="medium">
-            <Link href="/docs/guides/realtime">Documentation</Link>
+            <Link href="/docs/guides/realtime" prefetch={false}>
+              Documentation
+            </Link>
           </Button>
         </div>
       </div>

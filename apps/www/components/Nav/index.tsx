@@ -218,7 +218,9 @@ const Nav = ({ hideNavbar, stickyNavbar = true }: Props) => {
                   {isLoggedIn ? (
                     <>
                       <Button className="hidden lg:inline-flex" asChild>
-                        <Link href="/dashboard/projects">Dashboard</Link>
+                        <Link href="/dashboard/projects" prefetch={false}>
+                          Dashboard
+                        </Link>
                       </Button>
                       <AuthenticatedDropdownMenu menu={userMenu} user={user} site="www" />
                     </>
@@ -227,6 +229,7 @@ const Nav = ({ hideNavbar, stickyNavbar = true }: Props) => {
                       <Button className="hidden lg:inline-flex" asChild>
                         <Link
                           href="https://supabase.com/dashboard"
+                          prefetch={false}
                           onClick={() =>
                             sendTelemetryEvent({
                               action: 'sign_in_button_clicked',
@@ -240,6 +243,7 @@ const Nav = ({ hideNavbar, stickyNavbar = true }: Props) => {
                       <Button variant="primary" className="hidden lg:inline-flex" asChild>
                         <Link
                           href="https://supabase.com/dashboard/sign-up"
+                          prefetch={false}
                           onClick={() =>
                             sendTelemetryEvent({
                               action: 'start_project_button_clicked',

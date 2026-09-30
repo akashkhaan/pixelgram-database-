@@ -6,6 +6,8 @@ import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { cn } from 'ui'
 
+import { isCrossZoneHref } from '@/lib/cross-zone'
+
 const ProductCard = ({
   className,
   title,
@@ -39,6 +41,7 @@ const ProductCard = ({
   return (
     <Link
       href={url}
+      prefetch={isCrossZoneHref(url) ? false : undefined}
       className={cn(
         'group relative w-full sm:h-[400px] flex flex-col gap-5 lg:flex-row focus-ring rounded-xl',
         className

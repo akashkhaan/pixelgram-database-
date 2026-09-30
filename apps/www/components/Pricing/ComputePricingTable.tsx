@@ -1,5 +1,6 @@
 import pricingAddOn from '~/data/PricingAddOnTable.json'
 import Link from 'next/link'
+import { isCrossZoneHref } from '@/lib/cross-zone'
 import { Fragment, useMemo } from 'react'
 import { cn } from 'ui'
 
@@ -51,6 +52,7 @@ const ComputePricingTable = () => {
                       {column.url ? (
                         <Link
                           href={column.url}
+                          prefetch={isCrossZoneHref(column.url) ? false : undefined}
                           className="underline text-primary hover:text-brand-600"
                           target="_blank"
                         >

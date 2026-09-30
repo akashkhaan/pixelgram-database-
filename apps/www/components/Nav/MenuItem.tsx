@@ -3,6 +3,8 @@ import Link from 'next/link'
 import React from 'react'
 import { cn } from 'ui'
 
+import { isCrossZoneHref } from '@/lib/cross-zone'
+
 const MenuItem = React.forwardRef<
   React.ElementRef<'a'>,
   React.ComponentPropsWithoutRef<'a'> & {
@@ -29,6 +31,7 @@ const MenuItem = React.forwardRef<
     return (
       <Link
         href={href}
+        prefetch={isCrossZoneHref(href) ? false : undefined}
         ref={ref}
         className={cn(
           'group/menu-item flex items-center text-foreground-light text-sm hover:text-foreground select-none gap-3 rounded-md p-2 leading-none no-underline focus-ring focus-visible:text-foreground',

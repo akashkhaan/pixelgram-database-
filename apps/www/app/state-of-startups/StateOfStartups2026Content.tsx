@@ -303,6 +303,7 @@ const CTABanner = forwardRef<HTMLElement>((props, ref) => {
         <Button variant="primary" asChild size="medium">
           <Link
             href="https://supabase.com/dashboard"
+            prefetch={false}
             onClick={() =>
               sendTelemetryEvent({
                 action: 'start_project_button_clicked',

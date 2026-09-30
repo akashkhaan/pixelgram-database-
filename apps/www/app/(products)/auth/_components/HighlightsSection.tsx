@@ -1,6 +1,7 @@
 import SectionContainerWithCn from '~/components/Layouts/SectionContainerWithCn'
 import { Check } from 'lucide-react'
 import Link from 'next/link'
+import { isCrossZoneHref } from '@/lib/cross-zone'
 import { Button } from 'ui'
 
 const HIGHLIGHTS = [
@@ -65,7 +66,12 @@ export function HighlightsSection() {
               </div>
               <div className="mt-6">
                 <Button size="small" asChild>
-                  <Link href={highlight.cta.href}>{highlight.cta.label}</Link>
+                  <Link
+                    href={highlight.cta.href}
+                    prefetch={isCrossZoneHref(highlight.cta.href) ? false : undefined}
+                  >
+                    {highlight.cta.label}
+                  </Link>
                 </Button>
               </div>
             </div>

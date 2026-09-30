@@ -142,6 +142,7 @@ const UpgradePlan = ({ organizations = [], onClick, size = 'large', planId }: Up
           </DialogClose>
           <Button variant="primary" disabled={!value} asChild>
             <Link
+              prefetch={false}
               href={
                 value === 'new-organization'
                   ? `/dashboard/new?plan=${planId}`

@@ -1,6 +1,7 @@
 import SectionContainerWithCn from '~/components/Layouts/SectionContainerWithCn'
 import { Check } from 'lucide-react'
 import Link from 'next/link'
+import { isCrossZoneHref } from '@/lib/cross-zone'
 import { Button } from 'ui'
 
 const BUCKET_TYPES = [
@@ -65,7 +66,12 @@ export function BucketTypesSection() {
               </div>
               <div className="mt-6">
                 <Button size="small" asChild>
-                  <Link href={bucket.cta.href}>{bucket.cta.label}</Link>
+                  <Link
+                    href={bucket.cta.href}
+                    prefetch={isCrossZoneHref(bucket.cta.href) ? false : undefined}
+                  >
+                    {bucket.cta.label}
+                  </Link>
                 </Button>
               </div>
             </div>

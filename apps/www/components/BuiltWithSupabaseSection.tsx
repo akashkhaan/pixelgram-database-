@@ -109,6 +109,7 @@ export function BuiltWithSupabaseSection() {
           </h3>
           <Link
             href="/docs/guides/examples"
+            prefetch={false}
             className="text-sm text-foreground-light hover:text-foreground underline"
           >
             View all examples

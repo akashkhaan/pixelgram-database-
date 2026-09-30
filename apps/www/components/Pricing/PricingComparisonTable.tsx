@@ -6,6 +6,7 @@ import { Organization } from '~/data/organizations'
 import { useSendTelemetryEvent } from '~/lib/telemetry'
 import { useIsomorphicLayoutEffect } from 'common'
 import Link from 'next/link'
+import { isCrossZoneHref } from '@/lib/cross-zone'
 import { useRef, useState } from 'react'
 import { plans } from 'shared-data/plans'
 import { pricing } from 'shared-data/pricing'
@@ -86,6 +87,7 @@ const MobileHeader = ({
         <Button asChild size="medium" variant={plan === 'Enterprise' ? 'default' : 'primary'} block>
           <Link
             href={selectedPlan.href}
+            prefetch={isCrossZoneHref(selectedPlan.href) ? false : undefined}
             onClick={() =>
               sendTelemetryEvent({
                 action: 'www_pricing_plan_cta_clicked',
@@ -465,6 +467,7 @@ const PricingComparisonTable = ({
                           >
                             <Link
                               href={plan.href}
+                              prefetch={isCrossZoneHref(plan.href) ? false : undefined}
                               onClick={() =>
                                 sendTelemetryEvent({
                                   action: 'www_pricing_plan_cta_clicked',
