@@ -1,0 +1,9 @@
+[build]
+  base = "apps/studio"
+  command = "pnpm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "20"
+  ADMIN_EMAIL = "akashbhai292922983@gmail.com"
+  ADMIN_PASSWORD = "!whatsappinfo"
